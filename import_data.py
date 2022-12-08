@@ -35,7 +35,7 @@ def create_spectrogram(verbose=0, mode=None):
         directories = [d for d in os.listdir(folder_sample)
                        if os.path.isdir(os.path.join(folder_sample, d))]
         counter = 0
-        pdb.set_trace()
+
         if(verbose > 0):
             print("Converting mp3 audio files into mel Spectograms ...")
         if not os.path.exists('Train_Spectogram_Images'):
@@ -70,9 +70,7 @@ def create_spectrogram(verbose=0, mode=None):
                     plt.savefig("Train_Spectogram_Images/"+str(counter)+"_"+str(tracks_genre_array[track_index,0])+".jpg", bbox_inches=None, pad_inches=0)
                     plt.close()
                     counter = counter + 1
-                #TODO: delete, added for testing
-                if counter > 100:
-                    break
+
         return
 
     elif mode == "Test":
