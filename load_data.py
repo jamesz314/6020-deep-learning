@@ -30,7 +30,7 @@ def load_dataset(verbose=0, mode=None, datasetSize=1.0):
         "Instrumental": 7
         }
         if(verbose > 0):
-            print "Compiling Training and Testing Sets ..."
+            print("Compiling Training and Testing Sets ...")
         filenames = [os.path.join("Train_Sliced_Images", f) for f in os.listdir("Train_Sliced_Images")
                        if f.endswith(".jpg")]
         images_all = [None]*(len(filenames))
@@ -87,7 +87,7 @@ def load_dataset(verbose=0, mode=None, datasetSize=1.0):
 
     if mode=="Test":
         if(verbose > 0):
-            print "Compiling Training and Testing Sets ..."
+            print("Compiling Training and Testing Sets ...")
         filenames = [os.path.join("Test_Sliced_Images", f) for f in os.listdir("Test_Sliced_Images")
                        if f.endswith(".jpg")]
         images = []

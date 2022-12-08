@@ -16,7 +16,7 @@ def slice_spect(verbose=0, mode=None):
                        if f.endswith(".jpg")]
         counter = 0
         if(verbose > 0):
-            print "Slicing Spectograms ..."
+            print("Slicing Spectograms ...")
         if not os.path.exists('Train_Sliced_Images'):
             os.makedirs('Train_Sliced_Images')
         for f in filenames:
@@ -24,7 +24,7 @@ def slice_spect(verbose=0, mode=None):
             img = Image.open(f)
             subsample_size = 128
             width, height = img.size
-            number_of_samples = width / subsample_size
+            number_of_samples = width // subsample_size
             for i in range(number_of_samples):
                 start = i*subsample_size
                 img_temporary = img.crop((start, 0., start + subsample_size, subsample_size))
@@ -41,7 +41,7 @@ def slice_spect(verbose=0, mode=None):
                        if f.endswith(".jpg")]
         counter = 0
         if(verbose > 0):
-            print "Slicing Spectograms ..."
+            print("Slicing Spectograms ...")
         if not os.path.exists('Test_Sliced_Images'):
             os.makedirs('Test_Sliced_Images')
         for f in filenames:
