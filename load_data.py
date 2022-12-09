@@ -6,6 +6,7 @@ from import_data import create_spectrogram
 from slice_spectrogram import slice_spect
 from keras.utils import np_utils
 from sklearn.model_selection import train_test_split
+# import pdb
 
 """
 Converts images and labels into training and testing matrices.
@@ -31,13 +32,14 @@ def load_dataset(verbose=0, mode=None, datasetSize=1.0):
         }
         if(verbose > 0):
             print("Compiling Training and Testing Sets ...")
-        filenames = [os.path.join("Train_Sliced_Images", f) for f in os.listdir("Train_Sliced_Images")
+        image_folder = "Train_Sliced_Images"
+        filenames = [os.path.join(image_folder, f) for f in os.listdir(image_folder)
                        if f.endswith(".jpg")]
         images_all = [None]*(len(filenames))
         labels_all = [None]*(len(filenames))
         for f in filenames:
-            index = int(re.search('Train_Sliced_Images/(.+?)_.*.jpg', f).group(1))
-            genre_variable = re.search('Train_Sliced_Images/.*_(.+?).jpg', f).group(1)
+            index = int(re.search(image_folder + '/(.+?)_.*.jpg', f).group(1))
+            genre_variable = re.search(image_folder + '/.*_(.+?).jpg', f).group(1)
             temp = cv2.imread(f, cv2.IMREAD_UNCHANGED)
             images_all[index] = cv2.cvtColor(temp, cv2.COLOR_BGR2GRAY)
             labels_all[index] = genre[genre_variable]
@@ -62,7 +64,8 @@ def load_dataset(verbose=0, mode=None, datasetSize=1.0):
         images = np.array(images)
         labels = np.array(labels)
         labels = labels.reshape(labels.shape[0],1)
-        train_x, test_x, train_y, test_y = train_test_split(images, labels, test_size=0.05, shuffle=True)
+
+        train_x, test_x, train_y, test_y = train_test_split(images, labels, test_size=0.05, random_state=1, shuffle=True)
 
         # Convert the labels into one-hot vectors.
         train_y = np_utils.to_categorical(train_y)

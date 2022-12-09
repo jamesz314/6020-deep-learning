@@ -1,6 +1,7 @@
 import os
 import re
 from PIL import Image
+import shutil
 
 """
 Slice the spectrogram into multiple 128x128 images which will be the input to the
@@ -9,7 +10,7 @@ Convolutional Neural Network.
 def slice_spect(verbose=0, mode=None):
     if mode=="Train":
         if os.path.exists('Train_Sliced_Images'):
-            return
+            return #shutil.rmtree('Train_Sliced_Images')
         labels = []
         image_folder = "Train_Spectogram_Images"
         filenames = [os.path.join(image_folder, f) for f in os.listdir(image_folder)
@@ -22,7 +23,7 @@ def slice_spect(verbose=0, mode=None):
         for f in filenames:
             genre_variable = re.search('Train_Spectogram_Images/.*_(.+?).jpg', f).group(1)
             img = Image.open(f)
-            subsample_size = 128
+            subsample_size = 128 # to avoid errors for converting to np.array in load_data.py
             width, height = img.size
             number_of_samples = width // subsample_size
             for i in range(number_of_samples):
