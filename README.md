@@ -7,6 +7,11 @@ Music Recommendation using latent feature vectors obtained from a network traine
 
 * Project is inspired by **Sander Dieleman's** blog, [*Recommending music on Spotify with Deep Learning*](http://benanne.github.io/2014/08/05/spotify-cnns.html), and a paper that he co-published, [*Deep content-based music recommendation*](https://proceedings.neurips.cc/paper/2013/file/b3ba8f1bee1238a2f37603d90b58898d-Paper.pdf)
 * The initial code is found online from **Vikram Shenoy** - [Vikram Shenoy](https://github.com/VikramShenoy97)
+* The main contributions to the code from our side includes:
+  * adjusting code to run on python3 (originally written for python2)
+  * adjusting code and fixing a few bugs to successfully input our audio data
+  * changing the CNN architecture to better match the layers from the article, rather than from the code's author
+  * 
 * [Free Music Archive Dataset](https://github.com/mdeff/fma)
 
 
