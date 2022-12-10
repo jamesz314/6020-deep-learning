@@ -11,7 +11,7 @@ Music Recommendation using latent feature vectors obtained from a network traine
   * adjusting code to run on python3 (originally written for python2)
   * adjusting code and fixing a few bugs to successfully input our audio data
   * changing the CNN architecture to better match the layers from the article, rather than from the code's author
-  * 
+
 * [Free Music Archive Dataset](https://github.com/mdeff/fma)
 
 
