@@ -52,9 +52,6 @@ def create_spectrogram(verbose=0, mode=None):
             print("Converting mp3 audio files into mel Spectograms ...")
         if not os.path.exists('Train_Spectogram_Images'):
             os.makedirs('Train_Spectogram_Images')
-        #shutil.rmtree('Test_Spectogram_Images')
-        if not os.path.exists('Test_Spectogram_Images'):
-            os.makedirs('Test_Spectogram_Images')
 
         for d in directories:
             label_directory = os.path.join(folder_sample, d)
@@ -108,7 +105,7 @@ def create_spectrogram(verbose=0, mode=None):
         counter = 0
         if(verbose > 0):
             print("Converting mp3 audio files into mel Spectograms ...")
-        if not os.path.exists('Test_Sepctogram_Images'):
+        if not os.path.exists('Test_Spectogram_Images'):
             os.makedirs('Test_Spectogram_Images')
         file_names = [os.path.join(folder_sample, f) for f in os.listdir(folder_sample)
                        if f.endswith(".mp3")]
@@ -127,6 +124,6 @@ def create_spectrogram(verbose=0, mode=None):
             plt.axis('off')
             plt.axes([0., 0., 1., 1.0], frameon=False, xticks=[], yticks=[])
             librosa.display.specshow(mel, cmap='gray_r')
-            plt.savefig("Test_Spectogram_Images/"+test_id+".jpg", cmap='gray_r', bbox_inches=None, pad_inches=0)
+            plt.savefig("Test_Spectogram_Images/"+test_id+".jpg", bbox_inches=None, pad_inches=0)
             plt.close()
         return

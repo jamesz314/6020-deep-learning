@@ -11,16 +11,18 @@ loaded_model.set_weights(loaded_model.get_weights())
 # representation.
 matrix_size = loaded_model.layers[-2].output.shape[1]
 new_model = Model(loaded_model.inputs, loaded_model.layers[-2].output)
-print new_model.summary()
+#print new_model.summary()
 
 images, labels = load_dataset(verbose=1, mode="Test")
+import pdb
+pdb.set_trace()
 images = np.expand_dims(images, axis=3)
 # Normalize the image.
 images = images / 255.
 # Display list of available test songs.
-print np.unique(labels)
+print(np.unique(labels))
 # Enter a song name which will be an anchor song.
-recommend_wrt = raw_input("Enter Song name:\n")
+recommend_wrt = input("Enter Song name:\n")
 prediction_anchor = np.zeros((1, matrix_size))
 count = 0
 predictions_song = []
@@ -61,12 +63,12 @@ for i in range(len(predictions_song)):
 distance_array = np.array(distance_array)
 recommendations = 0
 
-print "Recommendation is:"
+print("Recommendation is:")
 
 # Number of Recommendations is set to 2.
 while recommendations < 2:
     index = np.argmax(distance_array)
     value = distance_array[index]
-    print "Song Name: " + predictions_label[index] + " with value = %f" % (value)
+    print("Song Name: " + predictions_label[index] + " with value = %f" % (value))
     distance_array[index] = -np.inf
     recommendations = recommendations + 1
