@@ -14,8 +14,6 @@ new_model = Model(loaded_model.inputs, loaded_model.layers[-2].output)
 #print new_model.summary()
 
 images, labels = load_dataset(verbose=1, mode="Test")
-import pdb
-pdb.set_trace()
 images = np.expand_dims(images, axis=3)
 # Normalize the image.
 images = images / 255.
